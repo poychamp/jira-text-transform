@@ -2,6 +2,7 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const webpack = require('webpack')
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     mode: 'development',
@@ -14,11 +15,12 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                use: [
-                    'script-loader'
-                ],
+                loader: 'babel-loader'
             },
             {
                 test: /\.(scss|css)$/,
@@ -50,21 +52,24 @@ module.exports = {
                         // compiles Sass to CSS
                         loader: 'sass-loader'
                     },
-
                 ],
             },
         ],
     },
     resolve: {
-        extensions: ['.js', '.css', '.scss']
+        alias: {
+            'vue': 'vue/dist/vue.esm-bundler.js',
+        },
+        extensions: ['.js', '.css', '.scss', '.vue', '.tsx', '.ts'],
     },
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: "js/[name].js",
-        clean: true,
+        clean: false,
     },
     plugins: [
         new WebpackManifestPlugin(),
+        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css'
         }),

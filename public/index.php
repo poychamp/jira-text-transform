@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Transform JIRA Text to PR Text and Branch Text">
+    <meta name="author" content="leoncio Cesar Champ Polestico">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>JIRA Text Transform</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/app.css" rel="stylesheet" />
+
+</head>
+<body class="d-flex flex-column h-100">
+
+<!-- Begin page content -->
+<main id="app" class="flex-shrink-0">
+    <div class="container">
+        <h1 class="mt-5">JIRA Text Transform</h1>
+
+        <jira-text-transform />
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">
+            By <a href="https://github.com/poychamp">Champoy</a>
+        </span>
+    </div>
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
