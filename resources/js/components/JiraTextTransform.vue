@@ -15,7 +15,9 @@
     </div>
 
     <div class="highlight">
-      <span>[] {{ title }}</span>
+      <span>{{ link }}</span><br>
+      <span>[{{ ticketId }}] {{ title }}</span><br>
+      <span>{{ branch }}</span>
     </div>
   </form>
 </template>
@@ -26,5 +28,28 @@ export default{
     link: '',
     title: '',
   }),
+
+  computed: {
+    ticketId() {
+      let matches = this.link.match(/\/([^\/]+)$/)
+
+      if (! matches) {
+        return ''
+      }
+
+      return matches[1]
+    },
+
+    branch() {
+      if (this.title == '') {
+        return ''
+      }
+
+      let oneSpaceTitle = this.title.replace(/[ ]{2,}/g, ' ')
+      let branchText = this.ticketId + ' ' + oneSpaceTitle
+
+      return branchText.toLowerCase().replace(/[\- _\(\)]/g, '_')
+    }
+  }
 }
 </script>
