@@ -45,8 +45,9 @@ export default{
         return ''
       }
 
-      let oneSpaceTitle = this.title.replace(/[ ]{2,}/g, ' ')
-      let branchText = this.ticketId + ' ' + oneSpaceTitle
+      let strippedTitle = this.title.replace(/['"&]/g, '')
+          .replace(/[ ]{2,}/g, ' ')
+      let branchText = this.ticketId + ' ' + strippedTitle
 
       return branchText.toLowerCase().replace(/[\- _\(\)]/g, '_')
     }
