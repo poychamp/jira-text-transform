@@ -16,8 +16,9 @@
 
     <div class="highlight">
       <span>{{ link }}</span><br>
-      <span>[{{ ticketId }}] {{ title }}</span><br>
-      <span>{{ branch }}</span>
+      <span>{{ prTitle }}</span><br>
+      <span>{{ branch }}</span><br>
+      <span>For {{ prTitle }}. Here is the PR: </span>
     </div>
   </form>
 </template>
@@ -47,9 +48,14 @@ export default{
 
       let strippedTitle = this.title.replace(/['"&]/g, '')
           .replace(/[ ]{2,}/g, ' ')
+          .trim()
       let branchText = this.ticketId + ' ' + strippedTitle
 
       return branchText.toLowerCase().replace(/[\- _\(\)]/g, '_')
+    },
+
+    prTitle() {
+      return `[${this.ticketId}] ${this.title.trim()}`
     }
   }
 }
