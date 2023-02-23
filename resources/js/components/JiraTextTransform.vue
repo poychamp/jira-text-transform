@@ -52,7 +52,7 @@ export default{
       let branchText = this.ticketId + ' ' + strippedTitle
 
       return branchText.toLowerCase()
-          .replace(/[\- _\(\)]/g, '_')
+          .replace(/[^\w]/g, '_')
           .replace(/[_]{2,}/g, '_')
     },
 
